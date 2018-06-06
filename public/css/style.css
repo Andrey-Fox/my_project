@@ -1,0 +1,33 @@
+body {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: -10px;
+    z-index: 2;
+    /* background-image: url(../backgraund_1.jpg); */
+    background-image: url(http://wallpapers-images.ru/kartinki/wallpapers/wallpapers-movies-01.jpg);
+    /* background-position: center; */
+
+}
+
+/* .header{   
+    width: 1920px;
+    height: 1080px;
+} */
+
+h1{
+    font-size: 28px;
+    color: aqua;
+}
+
+.menu {list-style: none;}
+.menu li {
+display: inline-block;
+margin: 5px;
+}
+
+a{
+text-decoration: none;
+color: aqua;
+font-size: 22px;
+}

@@ -1,0 +1,11 @@
+{{> header }}
+
+ <h1>Введите название фильма</h1>
+    <form action="/movies" method="post">
+        <label>Movie</label><br>
+        <input type="text" name="Movie" /><br>
+        <input type="submit" value="Найти" />
+    </form>
+    <h1>{{pageTitle}}</h1>
+    <p>{{screamIt welcomeMessage}}</p>
+{{> footer }}

@@ -1,6 +1,6 @@
 const request = require('request');
 
-var searchMovies = (movies, callback) => {
+var searchMovies = (movie, callback) => {
 
   var encodedMovie = encodeURIComponent(movie);
   var apikey = 'f4ce871';

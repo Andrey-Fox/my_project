@@ -4,6 +4,8 @@ body {
     background-repeat: no-repeat;
     top: -10px;
     z-index: 2;
+    text-align: center;
+    margin-left: 750px;
     /* background-image: url(../backgraund_1.jpg); */
     background-image: url(http://wallpapers-images.ru/kartinki/wallpapers/wallpapers-movies-01.jpg);
     /* background-position: center; */

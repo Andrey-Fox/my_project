@@ -9,7 +9,7 @@ var app = express();
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-app.post("/movies", urlencodedParser, function (request, response) {
+app.post("/", urlencodedParser, function (request, response) {
   if(!request.body) return response.sendStatus(400);
 
   var mov= request.body.Movie;
@@ -18,24 +18,28 @@ app.post("/movies", urlencodedParser, function (request, response) {
     if (errorMessage) {
       console.log(errorMessage);
     } else {
-var Title = JSON.stringify(res.Title, undefined, 2);      
-var Released = JSON.stringify(res.Released, undefined, 2);
-var Poster = JSON.stringify(res.Poster, undefined, 2);
-var Awards = JSON.stringify(res.Awards, undefined, 2);
+
+
+// var Title = String(res.Title);     
+// var Released = res.Released;
+// var Poster = res.Poster;
+// var Awards = res.Awards;
 
       console.log(Poster);
-      console.log(JSON.stringify(res.Poster, undefined, 2));
-
-      res.render('home.hbs', {
-        Title: Title,
-        Released: Released,
-        Poster: Poster,
-        Awards: Awards
-        // welcomeMessage: 'Welcome to my website'
-      });
-    }
+      console.log(JSON.stringify(res.Title, undefined, 2));
+var Title = "Flesh";     
+var Released = "27 May 1970";
+var Poster = "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI2MTAxMjYzMF5BMl5BanBnXkFtZTcwOTc1MzMzMQ@@._V1_SX300.jpg";
+var Awards = "1 win.";
+ }   
   });
-
+      res.render('home.hbs', {
+        // Title: Title,
+        // Released: Released,
+        // Poster: Poster,
+        // Awards: Awards,
+        welcomeMessage: 'Welcome to mi'
+      });
 //  console.log(request.body.Movie);
 });
 

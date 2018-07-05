@@ -3,45 +3,14 @@ const hbs = require('hbs');
 const fs = require('fs');
 var bodyParser = require("body-parser");
 
-const searchMovies = require('./searchMovies/appMovies');
+// const searchMovies = require('./searchMovies/appMovies');
+const searchMovies = require('./searchMovies/searchMovies');
 
 var app = express();
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-app.post("/", urlencodedParser, function (request, response) {
-  if(!request.body) return response.sendStatus(400);
 
-  var mov= request.body.Movie;
- 
-  searchMovies.moviess(mov, (errorMessage, res) => {
-    if (errorMessage) {
-      console.log(errorMessage);
-    } else {
-
-
-// var Title = String(res.Title);     
-// var Released = res.Released;
-// var Poster = res.Poster;
-// var Awards = res.Awards;
-
-      console.log(Poster);
-      console.log(JSON.stringify(res.Title, undefined, 2));
-var Title = "Flesh";     
-var Released = "27 May 1970";
-var Poster = "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI2MTAxMjYzMF5BMl5BanBnXkFtZTcwOTc1MzMzMQ@@._V1_SX300.jpg";
-var Awards = "1 win.";
- }   
-  });
-      res.render('home.hbs', {
-        // Title: Title,
-        // Released: Released,
-        // Poster: Poster,
-        // Awards: Awards,
-        welcomeMessage: 'Welcome to mi'
-      });
-//  console.log(request.body.Movie);
-});
 
 
 
@@ -91,4 +60,61 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000);
+
+app.post("/", urlencodedParser, function (req, res) {
+  if(!req.body.Movie) return res.sendStatus(400);
+
+else {
+  var mov= req.body.Movie;
+  let rest;
+  searchMovies.searchMovies(mov, (errorMessage, results) => {
+    if (errorMessage) {
+      console.log(errorMessage);
+    } else {
+
+      console.log(JSON.stringify(results, undefined, 2));
+      rest = results;
+      console.log("1" + rest);
+
+ }    
+//  res.sendStatus(200);
+  var Title = (rest.Title);     
+  var Released = (rest.Released);
+  var Poster = (rest.Poster);
+  var Awards = (rest.Awards);
+
+  console.log("3" + Poster);
+
+      res.render('homeaAndMovie.hbs', {
+    Title: Title,
+    Released: Released,
+    Poster: Poster,
+    Awards: Awards,
+    welcomeMessage: 'Welcome to mi'
+  });
+  });
+ 
+//  setTimeout(function(){
+
+
+
+//   console.log("2" + rest);
+//   console.log("3" + Released);
+//  },1000);
+
+
+
+// res.sendStatus(200);
+      // res.render('homeaAndMovie.hbs', {
+      //   // Title: Title,
+      //   // Released: Released,
+      //   // Poster: Poster,
+      //   // Awards: Awards,
+      //   welcomeMessage: 'Welcome to mi'
+      // });
+//  console.log(request.body.Movie);
+}
+});
+
+app.listen(3010);
+console.log('Server started on port 3010');
